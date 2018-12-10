@@ -1,10 +1,13 @@
 package com.example.damian.calculator;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.mozilla.javascript.Scriptable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -211,6 +214,21 @@ btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 processor = tvProcessor.getText().toString();
+                processor =processor.replaceAll("x", "*");
+                org.mozilla.javascript.Context rhino = org.mozilla.javascript.Context.enter();
+                rhino.setOptimizationLevel(-1);
+                String result = "";
+
+                try {
+                    Scriptable scope =rhino.initSafeStandardObjects();
+                    result = rhino.evaluateString(scope, processor, "JavaScript", 1, null).toString();
+                }
+                catch (Exception e)
+                {
+                    result ="Error";
+                }
+                tvResult.setText(result);
+
 
             }
 
