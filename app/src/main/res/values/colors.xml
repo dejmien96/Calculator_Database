@@ -3,9 +3,4 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-
-    <color name="colorFuncBtnBackground">#cccccc</color>
-    <color name="colorFuncBtnText">#00796b</color>
-    <color name="colorNumBtnBackground">#dddddd</color>
-    <color name="colorNumBtnText">#333333</color>
 </resources>
